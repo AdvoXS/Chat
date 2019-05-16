@@ -43,23 +43,23 @@
             this.dxghToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.показыватьМойНикToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.показыватьУчастниковЧатаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.показыватьПредупрежденияБезопасностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.чтоТакоеЗащищенныйРежимToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.профильToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.информацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьФайлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьФайлзащищенныйРежимToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveChatFromFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьВФайлзащищенныйРежимToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearChatToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.цветШрифтаЧатаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.показыватьМойНикToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.показыватьУчастниковЧатаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.показыватьПредупрежденияБезопасностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.чтоТакоеЗащищенныйРежимToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.профильToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.информацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -184,6 +184,46 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(50, 21);
             this.fileToolStripMenuItem.Text = "Файл";
             // 
+            // открытьФайлToolStripMenuItem
+            // 
+            this.открытьФайлToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("открытьФайлToolStripMenuItem.Image")));
+            this.открытьФайлToolStripMenuItem.Name = "открытьФайлToolStripMenuItem";
+            this.открытьФайлToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
+            this.открытьФайлToolStripMenuItem.Text = "Открыть";
+            this.открытьФайлToolStripMenuItem.Click += new System.EventHandler(this.открытьФайлToolStripMenuItem_Click);
+            // 
+            // открытьФайлзащищенныйРежимToolStripMenuItem
+            // 
+            this.открытьФайлзащищенныйРежимToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("открытьФайлзащищенныйРежимToolStripMenuItem.Image")));
+            this.открытьФайлзащищенныйРежимToolStripMenuItem.Name = "открытьФайлзащищенныйРежимToolStripMenuItem";
+            this.открытьФайлзащищенныйРежимToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
+            this.открытьФайлзащищенныйРежимToolStripMenuItem.Text = "Открыть(защищенный режим)";
+            this.открытьФайлзащищенныйРежимToolStripMenuItem.Click += new System.EventHandler(this.открытьФайлзащищенныйРежимToolStripMenuItem_Click);
+            // 
+            // saveChatFromFileToolStripMenuItem
+            // 
+            this.saveChatFromFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveChatFromFileToolStripMenuItem.Image")));
+            this.saveChatFromFileToolStripMenuItem.Name = "saveChatFromFileToolStripMenuItem";
+            this.saveChatFromFileToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
+            this.saveChatFromFileToolStripMenuItem.Text = "Сохранить";
+            this.saveChatFromFileToolStripMenuItem.Click += new System.EventHandler(this.saveChatFromFileToolStripMenuItem_Click);
+            // 
+            // сохранитьВФайлзащищенныйРежимToolStripMenuItem
+            // 
+            this.сохранитьВФайлзащищенныйРежимToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("сохранитьВФайлзащищенныйРежимToolStripMenuItem.Image")));
+            this.сохранитьВФайлзащищенныйРежимToolStripMenuItem.Name = "сохранитьВФайлзащищенныйРежимToolStripMenuItem";
+            this.сохранитьВФайлзащищенныйРежимToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
+            this.сохранитьВФайлзащищенныйРежимToolStripMenuItem.Text = "Сохранить(защищенный режим)";
+            this.сохранитьВФайлзащищенныйРежимToolStripMenuItem.Click += new System.EventHandler(this.сохранитьВФайлзащищенныйРежимToolStripMenuItem_Click);
+            // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выходToolStripMenuItem.Image")));
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
+            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -191,6 +231,14 @@
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(64, 21);
             this.editToolStripMenuItem.Text = "Правка";
+            // 
+            // clearChatToolStripMenuItem1
+            // 
+            this.clearChatToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("clearChatToolStripMenuItem1.Image")));
+            this.clearChatToolStripMenuItem1.Name = "clearChatToolStripMenuItem1";
+            this.clearChatToolStripMenuItem1.Size = new System.Drawing.Size(154, 24);
+            this.clearChatToolStripMenuItem1.Text = "Очистить чат";
+            this.clearChatToolStripMenuItem1.Click += new System.EventHandler(this.clearChatToolStripMenuItem1_Click);
             // 
             // видToolStripMenuItem
             // 
@@ -202,6 +250,14 @@
             this.видToolStripMenuItem.Name = "видToolStripMenuItem";
             this.видToolStripMenuItem.Size = new System.Drawing.Size(41, 21);
             this.видToolStripMenuItem.Text = "Вид";
+            // 
+            // цветШрифтаЧатаToolStripMenuItem
+            // 
+            this.цветШрифтаЧатаToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("цветШрифтаЧатаToolStripMenuItem.Image")));
+            this.цветШрифтаЧатаToolStripMenuItem.Name = "цветШрифтаЧатаToolStripMenuItem";
+            this.цветШрифтаЧатаToolStripMenuItem.Size = new System.Drawing.Size(339, 24);
+            this.цветШрифтаЧатаToolStripMenuItem.Text = "Шрифт чата";
+            this.цветШрифтаЧатаToolStripMenuItem.Click += new System.EventHandler(this.цветШрифтаЧатаToolStripMenuItem_Click);
             // 
             // показыватьМойНикToolStripMenuItem
             // 
@@ -249,6 +305,14 @@
             this.чтоТакоеЗащищенныйРежимToolStripMenuItem.Text = "Что такое защищенный режим?";
             this.чтоТакоеЗащищенныйРежимToolStripMenuItem.Click += new System.EventHandler(this.чтоТакоеЗащищенныйРежимToolStripMenuItem_Click);
             // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("оПрограммеToolStripMenuItem.Image")));
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(269, 24);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            // 
             // профильToolStripMenuItem
             // 
             this.профильToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -263,70 +327,6 @@
             this.информацияToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.информацияToolStripMenuItem.Text = "Информация";
             this.информацияToolStripMenuItem.Click += new System.EventHandler(this.информацияToolStripMenuItem_Click);
-            // 
-            // открытьФайлToolStripMenuItem
-            // 
-            this.открытьФайлToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("открытьФайлToolStripMenuItem.Image")));
-            this.открытьФайлToolStripMenuItem.Name = "открытьФайлToolStripMenuItem";
-            this.открытьФайлToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
-            this.открытьФайлToolStripMenuItem.Text = "Открыть";
-            this.открытьФайлToolStripMenuItem.Click += new System.EventHandler(this.открытьФайлToolStripMenuItem_Click);
-            // 
-            // открытьФайлзащищенныйРежимToolStripMenuItem
-            // 
-            this.открытьФайлзащищенныйРежимToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("открытьФайлзащищенныйРежимToolStripMenuItem.Image")));
-            this.открытьФайлзащищенныйРежимToolStripMenuItem.Name = "открытьФайлзащищенныйРежимToolStripMenuItem";
-            this.открытьФайлзащищенныйРежимToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
-            this.открытьФайлзащищенныйРежимToolStripMenuItem.Text = "Открыть(защищенный режим)";
-            this.открытьФайлзащищенныйРежимToolStripMenuItem.Click += new System.EventHandler(this.открытьФайлзащищенныйРежимToolStripMenuItem_Click);
-            // 
-            // saveChatFromFileToolStripMenuItem
-            // 
-            this.saveChatFromFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveChatFromFileToolStripMenuItem.Image")));
-            this.saveChatFromFileToolStripMenuItem.Name = "saveChatFromFileToolStripMenuItem";
-            this.saveChatFromFileToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
-            this.saveChatFromFileToolStripMenuItem.Text = "Сохранить";
-            this.saveChatFromFileToolStripMenuItem.Click += new System.EventHandler(this.saveChatFromFileToolStripMenuItem_Click);
-            // 
-            // сохранитьВФайлзащищенныйРежимToolStripMenuItem
-            // 
-            this.сохранитьВФайлзащищенныйРежимToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("сохранитьВФайлзащищенныйРежимToolStripMenuItem.Image")));
-            this.сохранитьВФайлзащищенныйРежимToolStripMenuItem.Name = "сохранитьВФайлзащищенныйРежимToolStripMenuItem";
-            this.сохранитьВФайлзащищенныйРежимToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
-            this.сохранитьВФайлзащищенныйРежимToolStripMenuItem.Text = "Сохранить(защищенный режим)";
-            this.сохранитьВФайлзащищенныйРежимToolStripMenuItem.Click += new System.EventHandler(this.сохранитьВФайлзащищенныйРежимToolStripMenuItem_Click);
-            // 
-            // выходToolStripMenuItem
-            // 
-            this.выходToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("выходToolStripMenuItem.Image")));
-            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
-            this.выходToolStripMenuItem.Text = "Выход";
-            this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
-            // 
-            // clearChatToolStripMenuItem1
-            // 
-            this.clearChatToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("clearChatToolStripMenuItem1.Image")));
-            this.clearChatToolStripMenuItem1.Name = "clearChatToolStripMenuItem1";
-            this.clearChatToolStripMenuItem1.Size = new System.Drawing.Size(154, 24);
-            this.clearChatToolStripMenuItem1.Text = "Очистить чат";
-            this.clearChatToolStripMenuItem1.Click += new System.EventHandler(this.clearChatToolStripMenuItem1_Click);
-            // 
-            // цветШрифтаЧатаToolStripMenuItem
-            // 
-            this.цветШрифтаЧатаToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("цветШрифтаЧатаToolStripMenuItem.Image")));
-            this.цветШрифтаЧатаToolStripMenuItem.Name = "цветШрифтаЧатаToolStripMenuItem";
-            this.цветШрифтаЧатаToolStripMenuItem.Size = new System.Drawing.Size(339, 24);
-            this.цветШрифтаЧатаToolStripMenuItem.Text = "Шрифт чата";
-            this.цветШрифтаЧатаToolStripMenuItem.Click += new System.EventHandler(this.цветШрифтаЧатаToolStripMenuItem_Click);
-            // 
-            // оПрограммеToolStripMenuItem
-            // 
-            this.оПрограммеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("оПрограммеToolStripMenuItem.Image")));
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(269, 24);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
-            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -349,6 +349,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Narrow chat";
             this.Activated += new System.EventHandler(this.Form1_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);

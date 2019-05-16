@@ -65,9 +65,9 @@ namespace chatick
         private void Listen()
         {
 
-            udpClient = new UdpClient(port+1);
-           // udpClient.Client.SendTimeout = 5000;
-           // udpClient.Client.ReceiveTimeout = 500;
+            udpClient = new UdpClient(port+2);
+            udpClient.Client.SendTimeout = 5000;
+           udpClient.Client.ReceiveTimeout = 500;
             localIp = null;
             //udpClient.ExclusiveAddressUse = false;
             //localIp = new IPEndPoint(IPAddr);
@@ -544,6 +544,10 @@ namespace chatick
                 getInfoAboutUser getInfoWin = new getInfoAboutUser(listUsers.SelectedItem.ToString());
                 getInfoWin.Show();
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
         }
     }
 }
