@@ -50,6 +50,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
@@ -114,6 +116,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(151, 148);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(303, 20);
             this.textBox2.TabIndex = 2;
             // 
@@ -127,12 +130,13 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("AcadEref", 17.82178F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(212, 203);
+            this.button1.Location = new System.Drawing.Point(215, 203);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(172, 44);
             this.button1.TabIndex = 0;
             this.button1.Text = "Войти";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // tabPage2
             // 
@@ -271,6 +275,17 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Регистрация";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Crimson;
+            this.label11.Location = new System.Drawing.Point(148, 185);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(323, 15);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Ошибка входа. Введенны неверные логин или пароль.";
+            this.label11.Visible = false;
+            // 
             // logForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -314,5 +329,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

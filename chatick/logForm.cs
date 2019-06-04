@@ -11,22 +11,31 @@ namespace chatick
             InitializeComponent();
             parentForm = p;
         }
+        private bool check_valid_textboxes_tabSingUP()
+        {
+            if (textBox3.Text != "" && textBox3.Text.Length > 3 &&
+                textBox4.Text != "" && textBox4.Text.Length > 5 &&
+                   textBox5.Text != "" && textBox5.Text.Length > 2 &&
+                textBox6.Text != "" && textBox6.Text.Length > 3 &&
+                textBox7.Text != "") return true;
 
+            else return false;
+        }
         private void LogForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            parentForm.close_Form();
+            //parentForm.close_Form();
         }
 
         private void LogForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            parentForm.close_Form();
+            //parentForm.close_Form();
         }
-
+        DataBasePostgres dataBase;
         private void Button3_Click(object sender, EventArgs e)
         {
-            if (check_valid_textboxes())
+            if (check_valid_textboxes_tabSingUP())
             {
-                DataBasePostgres dataBase = new DataBasePostgres();
+                dataBase = new DataBasePostgres();
                 if (!dataBase.registration_user(textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, int.Parse(textBox7.Text)))
                 {
                     label10.Visible = true;
@@ -41,15 +50,24 @@ namespace chatick
             }
         }
 
-        private bool check_valid_textboxes()
+        
+
+        private void Button1_Click(object sender, EventArgs e)
         {
-            if (textBox3.Text != "" && textBox3.Text.Length > 3 &&
-                textBox4.Text != "" && textBox4.Text.Length > 5 &&
-                   textBox5.Text != "" && textBox5.Text.Length > 2 &&
-                textBox6.Text != "" && textBox6.Text.Length > 3 &&
-                textBox7.Text != "") return true;
-            
-            else return false;
+            label11.Visible = false;
+            dataBase = new DataBasePostgres();
+            string returnedString = dataBase.login_user(textBox1.Text, textBox2.Text);
+            if (returnedString != "0"){
+                parentForm.setName(returnedString);
+                parentForm.Show();
+                this.Hide();
+            }
+            else
+            {
+                label11.Visible = true;
+            }
         }
+
+       
     }
 }

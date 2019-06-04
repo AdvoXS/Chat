@@ -102,6 +102,28 @@ namespace chatick
             connection_db_close();
            return result;
         }
+        public string login_user(string nick, string pass)
+        {
+            connection_db_open();
+
+            NpgsqlCommand com = new NpgsqlCommand("SELECT nick FROM user_info,user_pass " +
+                "where user_info.id = user_pass.id and nick = @n and @p=password", NpgConnection);
+            com.Parameters.AddWithValue("n", nick);
+            com.Parameters.AddWithValue("p",pass);
+            NpgsqlDataReader reader;
+            reader = com.ExecuteReader();
+            if (reader.Read())
+            {
+                string nickName = reader.GetString(0);
+                connection_db_close();
+                return nickName;
+            }
+            else
+            {
+                connection_db_close();
+                return "0";
+            }
+        }
         public bool registration_user(string nick,string pass,string first_name, string second_name, int age)
         {
             connection_db_open();
