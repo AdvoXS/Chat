@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 using System.IO;
 using System.Security.Cryptography;
 namespace chatick
@@ -40,12 +41,18 @@ namespace chatick
             random = rand.Next(1, 1000);
             name = "user" + random;
 
-            setupForm setForm = new setupForm(this);
-            setForm.ShowDialog();
-            setForm.Activate();
+            //setupForm setForm = new setupForm(this);
+            //setForm.ShowDialog();
+            //setForm.Activate();
+            logForm logForm_ = new logForm(this);
+            logForm_.ShowDialog();
+            logForm_.Activate();
             setup();
         }
-
+        public void close_Form()
+        {
+            this.Close();
+        }
         //--------------------------------------backend---------------------------------------------------------------
 
         private void setup()
@@ -103,7 +110,7 @@ namespace chatick
 
         string tmpName = "";
 
-        private void Listener()
+        async private void Listener()
         {
             try
             {
@@ -156,7 +163,35 @@ namespace chatick
                     //вывод обычных данных
                     else if (formatted_data != "")
                     {
-                        Action act = () => textBox1.AppendText(formatted_data + "\r\n");
+                        //парсим сообщение
+                        bool isParseNick = true;
+                        string parseNick = "";
+                        string parseMessage = "";
+                        if (formatted_data[0] != '\t')
+                        {
+                            for (int i = 0; i < formatted_data.Length; i++)
+                            {
+                                if (isParseNick && formatted_data[i] != ':')
+                                {
+                                    parseNick += formatted_data[i];
+                                }
+                                else if (formatted_data[i] == ':') isParseNick = false;
+                                else if (!isParseNick && formatted_data[i] != ':')
+                                {
+                                    parseMessage += formatted_data[i];
+                                }
+                            }
+                            try //сохраняем сообщение в историю(в таблицу history_messages)
+                            {
+                                DataBasePostgres dataBase = new DataBasePostgres();
+                                await Task.Run(() => dataBase.add_message_user_async(parseNick, Convert.ToString(DateTime.Now), parseMessage));
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Ошибка соединения с сервером. Сообщение не может быть сохранено на серевере.\n Сохраните переписку на компьютере, если не хотите его потерять");
+                            }
+                        }
+                        Action act = () => textBox1.AppendText(formatted_data +" "+ "\r\n");
                         textBox1.Invoke(act);
                         Action act1 = () => textBox3.Focus();
                         textBox3.Invoke(act1);
@@ -197,7 +232,7 @@ namespace chatick
 
         private void sendMessage(string mes)
         {
-            string kek = name + ": " + mes;
+            string kek = name + ":" + mes;
             byte[] data = ToAes256(kek);
             udpClient.Send(data, data.Length, remote);
             textBox3.Text = "";
@@ -548,6 +583,29 @@ namespace chatick
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+        }
+
+        private void ПолучитьНикиВсехУастниковToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataBasePostgres data = new DataBasePostgres();
+            string result="";
+            string[] res = data.read_all_nicks_participants().ToArray();
+            for(int i = 0; i < res.Length; i++)
+            {
+                result += res[i] + " ";
+            }
+            MessageBox.Show(result);
+        }
+
+        private void Form1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ИсторияСообщенийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            history_messages_Form his_mes_Form = new history_messages_Form();
+            his_mes_Form.Show();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Bson;
 namespace chatick
@@ -14,8 +15,22 @@ namespace chatick
             InitializeComponent();
             Nick = nick;
         }
-        
-        async void bdConnect()
+        async void bdConnectPostgr_async()
+        {
+            DataBasePostgres dataBase = new DataBasePostgres();
+            try
+            {
+                await Task.Run(() => dataBase.create_information_about_user_async(Nick,
+                    textBox1.Text, textBox2.Text, Convert.ToInt32(textBox3.Text)));
+                
+            }
+            catch (Npgsql.PostgresException)
+            {
+                MessageBox.Show("Ошибка при добавлении информации. Удостоверьтесь, что вы ранее не добавляли!");
+            }
+            MessageBox.Show("Информация добавлена!");
+        }
+        /*async void bdConnect()   // Подключение к MongoDB
         {
             bool finded = false;
             var client = new MongoClient("mongodb+srv://user:user@kantian-bbnou.mongodb.net/test?retryWrites=true");
@@ -46,12 +61,12 @@ namespace chatick
                 label5.Visible = true;
                 label5.Text = "Информация уже существует! Изменение пока невозможно";
             }
-        }
+        }*/
         
         private void button1_Click(object sender, EventArgs e)
         {
-            bdConnect();
-            
+            // bdConnect();
+            bdConnectPostgr_async();
         }
     }
    

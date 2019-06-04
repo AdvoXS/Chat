@@ -40,10 +40,18 @@ namespace chatick
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            bool niceNick = true;
             if(e.KeyChar == 13)
             {
-                form.setName(textBox1.Text);
-                this.Close();
+                for(int i = 0; i < textBox1.Text.Length; i++)
+                {
+                    if (textBox1.Text[i] == ':') niceNick = false;
+                }
+                if (niceNick)
+                {
+                    form.setName(textBox1.Text);
+                    this.Close();
+                }
             }
         }
     }
