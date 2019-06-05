@@ -156,6 +156,12 @@
     </Compile>
     <Compile Include="DataBase Classes\AppDatabase.cs" />
     <Compile Include="DataBase Classes\DataBasePostgres.cs" />
+    <Compile Include="debugWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="debugWindow.Designer.cs">
+      <DependentUpon>debugWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </Compile>
     <EmbeddedResource Include="aboutInformationWindow.resx">
       <DependentUpon>aboutInformationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="debugWindow.resx">
+      <DependentUpon>debugWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

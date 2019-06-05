@@ -6,10 +6,9 @@ namespace chatick
     public partial class logForm : Form
     {
         Form1 parentForm;
-        public logForm(Form1 p)
+        public logForm()
         {
             InitializeComponent();
-            parentForm = p;
         }
         private bool check_valid_textboxes_tabSingUP()
         {
@@ -23,7 +22,7 @@ namespace chatick
         }
         private void LogForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //parentForm.close_Form();
+            
         }
 
         private void LogForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -58,7 +57,7 @@ namespace chatick
             dataBase = new DataBasePostgres();
             string returnedString = dataBase.login_user(textBox1.Text, textBox2.Text);
             if (returnedString != "0"){
-                parentForm.setName(returnedString);
+                parentForm = new Form1(this, returnedString);
                 parentForm.Show();
                 this.Hide();
             }
@@ -68,6 +67,17 @@ namespace chatick
             }
         }
 
-       
+        private void Label12_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Ваши сообщения  не сохранятся!\nВы точно хотите войти, как гость?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
+            {
+                Random rand = new Random();
+                int random = rand.Next(1, 1000);
+                parentForm = new Form1(this, "guest" + random);
+                parentForm.Show();
+                this.Hide();
+            }
+            
+        }
     }
 }

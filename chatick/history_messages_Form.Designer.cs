@@ -63,6 +63,7 @@
             this.label1.Size = new System.Drawing.Size(121, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "История переписок";
+            this.label1.DoubleClick += new System.EventHandler(this.Label1_DoubleClick);
             // 
             // label2
             // 
@@ -99,6 +100,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(543, 345);
             this.textBox1.TabIndex = 6;
             // 

@@ -53,7 +53,7 @@ namespace chatick
             {
                 cmd.Connection = NpgConnection;
                 cmd.CommandText = "INSERT INTO public.history_messages (id,date_out,message) " +
-                    "VALUES ((Select id from user_info where @n=nick and nick is not null),to_date(@d,'dd.mm.yyyy hh24:mi:ss'),@m)";
+                    "VALUES ((Select id from user_info where @n=nick and nick is not null),to_timestamp(@d,'dd.mm.yyyy HH24:MI:SS'),@m)";
                 cmd.Parameters.AddWithValue("n", nick);
                 cmd.Parameters.AddWithValue("d", date);
                 cmd.Parameters.AddWithValue("m", message);
@@ -69,7 +69,8 @@ namespace chatick
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = NpgConnection;
-                    cmd.CommandText = "INSERT INTO user_info (nick,first_name,second_name,age) VALUES (@n,@f,@s,@a)";
+                    cmd.CommandText = "INSERT INTO user_info (nick,first_name,second_name,age) VALUES (@n,@f,@s,@a) " +
+                    "ON Conflict (nick) DO UPDATE SET first_name = @f,second_name = @s, age=@a; ";
                     cmd.Parameters.AddWithValue("n", nick);
                     cmd.Parameters.AddWithValue("f", first_name);
                     cmd.Parameters.AddWithValue("s", second_name);
@@ -85,7 +86,7 @@ namespace chatick
             NpgsqlCommand com = new NpgsqlCommand("select nick,message,to_char(date_out, 'dd.mm.yyyy') as myDate, to_char(date_out, 'hh24:mi:ss') as myTime" +
                 " from public.history_messages mes" +
                 ", public.user_info us where us.id=mes.id " +
-                "and date_out>=to_date(@i,'dd.mm.yyy') and date_out<=to_date(@o,'dd.mm.yyyy') order by date_out", NpgConnection);
+                "and date_out::date>=to_date(@i,'dd.mm.yyy') and date_out::date<=to_date(@o,'dd.mm.yyyy') order by date_out", NpgConnection);
             com.Parameters.AddWithValue("i", date_in);
             com.Parameters.AddWithValue("o", date_out);
             NpgsqlDataReader reader;
@@ -95,7 +96,7 @@ namespace chatick
             {
                 try
                 {
-                    result.Add(reader.GetString(2) +" "+ reader.GetString(0)+":"+ reader.GetString(1));
+                    result.Add(reader.GetString(3) +" "+ reader.GetString(0)+":"+ reader.GetString(1));
                 }
                 catch { }
             }

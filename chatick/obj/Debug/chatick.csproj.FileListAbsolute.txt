@@ -197,3 +197,4 @@ C:\Users\Fox\Desktop\учеба\1 курс\chatick\chatick\bin\Debug\System.Thre
 C:\Users\Fox\Desktop\учеба\1 курс\chatick\chatick\bin\Debug\System.ValueTuple.xml
 C:\Users\Fox\Desktop\учеба\1 курс\chatick\chatick\obj\Debug\chatick.history_messages_Form.resources
 C:\Users\Fox\Desktop\учеба\1 курс\chatick\chatick\obj\Debug\chatick.logForm.resources
+C:\Users\Fox\Desktop\учеба\1 курс\chatick\chatick\obj\Debug\chatick.debugWindow.resources

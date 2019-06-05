@@ -55,21 +55,21 @@
             this.показыватьМойНикToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.показыватьУчастниковЧатаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.показыватьПредупрежденияБезопасностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.чатToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.историяСообщенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.профильToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.информацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.чтоТакоеЗащищенныйРежимToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.профильToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.информацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.получитьНикиВсехУастниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.чатToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.историяСообщенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textBox1.Font = new System.Drawing.Font("Calibri", 9.980198F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(12, 27);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -82,9 +82,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(420, 338);
+            this.button3.Location = new System.Drawing.Point(417, 338);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 22);
+            this.button3.Size = new System.Drawing.Size(112, 28);
             this.button3.TabIndex = 3;
             this.button3.Text = "Send";
             this.button3.UseVisualStyleBackColor = true;
@@ -94,18 +94,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 7.841584F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(417, 30);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 15);
+            this.label4.Size = new System.Drawing.Size(33, 14);
             this.label4.TabIndex = 9;
             this.label4.Text = "Ник: ";
             // 
             // textBox3
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox3.Font = new System.Drawing.Font("Calibri", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox3.Location = new System.Drawing.Point(12, 338);
+            this.textBox3.MaximumSize = new System.Drawing.Size(800, 50);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(399, 23);
+            this.textBox3.Size = new System.Drawing.Size(399, 28);
             this.textBox3.TabIndex = 10;
             this.textBox3.Visible = false;
             this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
@@ -138,18 +140,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 7.841584F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(417, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 15);
+            this.label1.Size = new System.Drawing.Size(91, 14);
             this.label1.TabIndex = 12;
             this.label1.Text = "Участники чата:";
             // 
             // listUsers
             // 
+            this.listUsers.Font = new System.Drawing.Font("Arial", 7.841584F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listUsers.FormattingEnabled = true;
+            this.listUsers.ItemHeight = 14;
             this.listUsers.Location = new System.Drawing.Point(420, 68);
             this.listUsers.Name = "listUsers";
-            this.listUsers.Size = new System.Drawing.Size(112, 264);
+            this.listUsers.Size = new System.Drawing.Size(112, 256);
             this.listUsers.TabIndex = 13;
             this.listUsers.DoubleClick += new System.EventHandler(this.listUsers_DoubleClick);
             // 
@@ -240,7 +245,7 @@
             // 
             this.clearChatToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("clearChatToolStripMenuItem1.Image")));
             this.clearChatToolStripMenuItem1.Name = "clearChatToolStripMenuItem1";
-            this.clearChatToolStripMenuItem1.Size = new System.Drawing.Size(155, 24);
+            this.clearChatToolStripMenuItem1.Size = new System.Drawing.Size(189, 24);
             this.clearChatToolStripMenuItem1.Text = "Очистить чат";
             this.clearChatToolStripMenuItem1.Click += new System.EventHandler(this.clearChatToolStripMenuItem1_Click);
             // 
@@ -259,7 +264,7 @@
             // 
             this.цветШрифтаЧатаToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("цветШрифтаЧатаToolStripMenuItem.Image")));
             this.цветШрифтаЧатаToolStripMenuItem.Name = "цветШрифтаЧатаToolStripMenuItem";
-            this.цветШрифтаЧатаToolStripMenuItem.Size = new System.Drawing.Size(340, 24);
+            this.цветШрифтаЧатаToolStripMenuItem.Size = new System.Drawing.Size(341, 24);
             this.цветШрифтаЧатаToolStripMenuItem.Text = "Шрифт чата";
             this.цветШрифтаЧатаToolStripMenuItem.Click += new System.EventHandler(this.цветШрифтаЧатаToolStripMenuItem_Click);
             // 
@@ -269,7 +274,7 @@
             this.показыватьМойНикToolStripMenuItem.CheckOnClick = true;
             this.показыватьМойНикToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.показыватьМойНикToolStripMenuItem.Name = "показыватьМойНикToolStripMenuItem";
-            this.показыватьМойНикToolStripMenuItem.Size = new System.Drawing.Size(340, 24);
+            this.показыватьМойНикToolStripMenuItem.Size = new System.Drawing.Size(341, 24);
             this.показыватьМойНикToolStripMenuItem.Text = "Показывать мой ник";
             this.показыватьМойНикToolStripMenuItem.Click += new System.EventHandler(this.показыватьМойНикToolStripMenuItem_Click);
             // 
@@ -279,7 +284,7 @@
             this.показыватьУчастниковЧатаToolStripMenuItem.CheckOnClick = true;
             this.показыватьУчастниковЧатаToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.показыватьУчастниковЧатаToolStripMenuItem.Name = "показыватьУчастниковЧатаToolStripMenuItem";
-            this.показыватьУчастниковЧатаToolStripMenuItem.Size = new System.Drawing.Size(340, 24);
+            this.показыватьУчастниковЧатаToolStripMenuItem.Size = new System.Drawing.Size(341, 24);
             this.показыватьУчастниковЧатаToolStripMenuItem.Text = "Показывать участников чата";
             this.показыватьУчастниковЧатаToolStripMenuItem.Click += new System.EventHandler(this.показыватьУчастниковЧатаToolStripMenuItem_Click);
             // 
@@ -289,56 +294,9 @@
             this.показыватьПредупрежденияБезопасностиToolStripMenuItem.CheckOnClick = true;
             this.показыватьПредупрежденияБезопасностиToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.показыватьПредупрежденияБезопасностиToolStripMenuItem.Name = "показыватьПредупрежденияБезопасностиToolStripMenuItem";
-            this.показыватьПредупрежденияБезопасностиToolStripMenuItem.Size = new System.Drawing.Size(340, 24);
+            this.показыватьПредупрежденияБезопасностиToolStripMenuItem.Size = new System.Drawing.Size(341, 24);
             this.показыватьПредупрежденияБезопасностиToolStripMenuItem.Text = "Показывать предупреждения безопасности";
             this.показыватьПредупрежденияБезопасностиToolStripMenuItem.Click += new System.EventHandler(this.показыватьПредупрежденияБезопасностиToolStripMenuItem_Click);
-            // 
-            // справкаToolStripMenuItem
-            // 
-            this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.чтоТакоеЗащищенныйРежимToolStripMenuItem,
-            this.оПрограммеToolStripMenuItem});
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(70, 21);
-            this.справкаToolStripMenuItem.Text = "Справка";
-            // 
-            // чтоТакоеЗащищенныйРежимToolStripMenuItem
-            // 
-            this.чтоТакоеЗащищенныйРежимToolStripMenuItem.Name = "чтоТакоеЗащищенныйРежимToolStripMenuItem";
-            this.чтоТакоеЗащищенныйРежимToolStripMenuItem.Size = new System.Drawing.Size(270, 24);
-            this.чтоТакоеЗащищенныйРежимToolStripMenuItem.Text = "Что такое защищенный режим?";
-            this.чтоТакоеЗащищенныйРежимToolStripMenuItem.Click += new System.EventHandler(this.чтоТакоеЗащищенныйРежимToolStripMenuItem_Click);
-            // 
-            // оПрограммеToolStripMenuItem
-            // 
-            this.оПрограммеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("оПрограммеToolStripMenuItem.Image")));
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(270, 24);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
-            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
-            // 
-            // профильToolStripMenuItem
-            // 
-            this.профильToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.информацияToolStripMenuItem,
-            this.получитьНикиВсехУастниковToolStripMenuItem});
-            this.профильToolStripMenuItem.Name = "профильToolStripMenuItem";
-            this.профильToolStripMenuItem.Size = new System.Drawing.Size(75, 21);
-            this.профильToolStripMenuItem.Text = "Профиль";
-            // 
-            // информацияToolStripMenuItem
-            // 
-            this.информацияToolStripMenuItem.Name = "информацияToolStripMenuItem";
-            this.информацияToolStripMenuItem.Size = new System.Drawing.Size(265, 24);
-            this.информацияToolStripMenuItem.Text = "Информация";
-            this.информацияToolStripMenuItem.Click += new System.EventHandler(this.информацияToolStripMenuItem_Click);
-            // 
-            // получитьНикиВсехУастниковToolStripMenuItem
-            // 
-            this.получитьНикиВсехУастниковToolStripMenuItem.Name = "получитьНикиВсехУастниковToolStripMenuItem";
-            this.получитьНикиВсехУастниковToolStripMenuItem.Size = new System.Drawing.Size(265, 24);
-            this.получитьНикиВсехУастниковToolStripMenuItem.Text = "Получить ники всех участников";
-            this.получитьНикиВсехУастниковToolStripMenuItem.Click += new System.EventHandler(this.ПолучитьНикиВсехУастниковToolStripMenuItem_Click);
             // 
             // чатToolStripMenuItem
             // 
@@ -355,11 +313,51 @@
             this.историяСообщенийToolStripMenuItem.Text = "История сообщений";
             this.историяСообщенийToolStripMenuItem.Click += new System.EventHandler(this.ИсторияСообщенийToolStripMenuItem_Click);
             // 
+            // профильToolStripMenuItem
+            // 
+            this.профильToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.информацияToolStripMenuItem});
+            this.профильToolStripMenuItem.Name = "профильToolStripMenuItem";
+            this.профильToolStripMenuItem.Size = new System.Drawing.Size(75, 21);
+            this.профильToolStripMenuItem.Text = "Профиль";
+            // 
+            // информацияToolStripMenuItem
+            // 
+            this.информацияToolStripMenuItem.Name = "информацияToolStripMenuItem";
+            this.информацияToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
+            this.информацияToolStripMenuItem.Text = "Изменить информацию";
+            this.информацияToolStripMenuItem.Click += new System.EventHandler(this.информацияToolStripMenuItem_Click);
+            // 
+            // справкаToolStripMenuItem
+            // 
+            this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.чтоТакоеЗащищенныйРежимToolStripMenuItem,
+            this.оПрограммеToolStripMenuItem});
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(70, 21);
+            this.справкаToolStripMenuItem.Text = "Справка";
+            // 
+            // чтоТакоеЗащищенныйРежимToolStripMenuItem
+            // 
+            this.чтоТакоеЗащищенныйРежимToolStripMenuItem.Name = "чтоТакоеЗащищенныйРежимToolStripMenuItem";
+            this.чтоТакоеЗащищенныйРежимToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
+            this.чтоТакоеЗащищенныйРежимToolStripMenuItem.Text = "Что такое защищенный режим?";
+            this.чтоТакоеЗащищенныйРежимToolStripMenuItem.Click += new System.EventHandler(this.чтоТакоеЗащищенныйРежимToolStripMenuItem_Click);
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("оПрограммеToolStripMenuItem.Image")));
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 365);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(547, 380);
             this.Controls.Add(this.listUsers);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox3);
@@ -421,7 +419,6 @@
         private System.Windows.Forms.ToolStripMenuItem показыватьПредупрежденияБезопасностиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem профильToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem информацияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem получитьНикиВсехУастниковToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem чатToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem историяСообщенийToolStripMenuItem;
     }

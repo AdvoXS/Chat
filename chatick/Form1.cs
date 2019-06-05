@@ -16,8 +16,7 @@ namespace chatick
         IPEndPoint remote;
         UdpClient client;
         IPAddress multiaddress;
-        Random rand = new Random();
-        int random;
+
         string name; //user name
         int port;
         //listen
@@ -30,27 +29,30 @@ namespace chatick
 
         //form
         bool formclosed = false;
-        public Form1()
+        logForm parentForm;
+        public Form1(logForm logform,string nick)
         {
             InitializeComponent();
             
+            name = nick;
+            parentForm = logform;
+            //setupForm setForm = new setupForm(this);
+            //setForm.ShowDialog();
+            //setForm.Activate();
+            setup();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            random = rand.Next(1, 1000);
-            name = "user" + random;
-
-            //setupForm setForm = new setupForm(this);
-            //setForm.ShowDialog();
-            //setForm.Activate();
-            logForm logForm_ = new logForm(this);
-            logForm_.ShowDialog();
-            logForm_.Activate();
-            setup();
+            
         }
         public void close_Form()
         {
+            delName();
+            udpClient.Close();
+            thread.Abort();
+            thread.Join(5000);
+            thread = null;
             this.Close();
         }
         //--------------------------------------backend---------------------------------------------------------------
@@ -121,7 +123,6 @@ namespace chatick
                     formatted_data = FromAes256(data);//Encoding.UTF8.GetString(data);
 
                     //принятие имени в список участников
-
                     if (formatted_data != "" && formatted_data[0] == '%' && formatted_data[1] == '&' && formatted_data[2] == 'n' && formatted_data[3] == 'm')
                     {
                         for (int i = 4; i < formatted_data.Length; i++)
@@ -161,7 +162,7 @@ namespace chatick
                         tmpName = "";
                     }
                     //вывод обычных данных
-                    else if (formatted_data != "")
+                    else if (formatted_data != "" )
                     {
                         //парсим сообщение
                         bool isParseNick = true;
@@ -188,13 +189,27 @@ namespace chatick
                             }
                             catch
                             {
-                                MessageBox.Show("Ошибка соединения с сервером. Сообщение не может быть сохранено на серевере.\n Сохраните переписку на компьютере, если не хотите его потерять");
+                                MessageBox.Show("Ошибка соединения. Сообщение не может быть сохранено на серевере.\n Сохраните переписку на компьютере, если не хотите его потерять");
                             }
                         }
-                        Action act = () => textBox1.AppendText(formatted_data +" "+ "\r\n");
-                        textBox1.Invoke(act);
-                        Action act1 = () => textBox3.Focus();
-                        textBox3.Invoke(act1);
+                        if (textBox1.Text != "")
+                        {
+                            Action act = () =>
+                            {
+                               textBox1.AppendText("\n");
+                                textBox1.AppendText(formatted_data);
+                            };
+                            textBox1.Invoke(act);
+                            Action act1 = () => textBox3.Focus();
+                            textBox3.Invoke(act1);
+                        }
+                        else
+                        {
+                            Action act = () => textBox1.AppendText(formatted_data);
+                            textBox1.Invoke(act);
+                            Action act1 = () => textBox3.Focus();
+                            textBox3.Invoke(act1);
+                        }
                     }
 
 
@@ -239,16 +254,12 @@ namespace chatick
 
         }
         
-            private void connectMessage()
+        private void connectMessage()
         {
-
-            string kek = "\t\t\t" + name + " connected to chat";
+            string kek = "\t\t" + name + " connected to chat";
             byte[] data = ToAes256(kek);//new byte[256];
             //data = Encoding.Unicode.GetBytes(kek);
             udpClient.Send(data, data.Length, remote);
-
-
-
         }
         private void sendName()
         {
@@ -271,7 +282,7 @@ namespace chatick
         }
         private void discMessage()
         {
-            string kek = "\t\t\t" + name + " disconnected from chat";
+            string kek = "\t\t" + name + " disconnected from chat";
             byte[] data = ToAes256(kek);
             udpClient.Send(data, data.Length, remote);
             //textBox3.Focus();
@@ -583,6 +594,17 @@ namespace chatick
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                if (MessageBox.Show("Вы хотите выйти?", "Выход", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    e.Cancel = true;
+                else
+                {
+                    parentForm.Close();
+                    e.Cancel = false;
+                }
+            }
+            
         }
 
         private void ПолучитьНикиВсехУастниковToolStripMenuItem_Click(object sender, EventArgs e)

@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,7 +51,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -68,6 +69,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
@@ -82,7 +85,17 @@
             this.tabPage1.Size = new System.Drawing.Size(591, 266);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sign In";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Crimson;
+            this.label11.Location = new System.Drawing.Point(148, 185);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(323, 15);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Ошибка входа. Введенны неверные логин или пароль.";
+            this.label11.Visible = false;
             // 
             // label3
             // 
@@ -141,6 +154,7 @@
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.textBox7);
@@ -160,7 +174,6 @@
             this.tabPage2.Size = new System.Drawing.Size(591, 266);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Sign Up";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -275,16 +288,16 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Регистрация";
             // 
-            // label11
+            // label12
             // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.Crimson;
-            this.label11.Location = new System.Drawing.Point(148, 185);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(323, 15);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Ошибка входа. Введенны неверные логин или пароль.";
-            this.label11.Visible = false;
+            this.label12.AutoSize = true;
+            this.label12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label12.Location = new System.Drawing.Point(485, 232);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 15);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "Войти как гость";
+            this.label12.Click += new System.EventHandler(this.Label12_Click);
             // 
             // logForm
             // 
@@ -293,7 +306,8 @@
             this.ClientSize = new System.Drawing.Size(619, 312);
             this.Controls.Add(this.tabControl1);
             this.Name = "logForm";
-            this.Text = "logForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Log In";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.LogForm_FormClosed);
             this.tabControl1.ResumeLayout(false);
@@ -330,5 +344,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }
