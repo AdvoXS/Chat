@@ -148,78 +148,79 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="aboutInformationWindow.cs">
+    <Compile Include="Forms\aboutInformationWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aboutInformationWindow.Designer.cs">
+    <Compile Include="Forms\aboutInformationWindow.Designer.cs">
       <DependentUpon>aboutInformationWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase Classes\AppDatabase.cs" />
     <Compile Include="DataBase Classes\DataBasePostgres.cs" />
-    <Compile Include="debugWindow.cs">
+    <Compile Include="Forms\debugWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="debugWindow.Designer.cs">
+    <Compile Include="Forms\debugWindow.Designer.cs">
       <DependentUpon>debugWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="getInfoAboutUser.cs">
+    <Compile Include="Forms\getInfoAboutUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="getInfoAboutUser.Designer.cs">
+    <Compile Include="Forms\getInfoAboutUser.Designer.cs">
       <DependentUpon>getInfoAboutUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="history_messages_Form.cs">
+    <Compile Include="Forms\history_messages_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="history_messages_Form.Designer.cs">
+    <Compile Include="Forms\history_messages_Form.Designer.cs">
       <DependentUpon>history_messages_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="logForm.cs">
+    <Compile Include="Forms\logForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="logForm.Designer.cs">
+    <Compile Include="Forms\logForm.Designer.cs">
       <DependentUpon>logForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="openFile.cs">
+    <Compile Include="Forms\openFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="openFile.Designer.cs">
+    <Compile Include="Forms\openFile.Designer.cs">
       <DependentUpon>openFile.cs</DependentUpon>
     </Compile>
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="setupForm.cs">
+    <Compile Include="Forms\setupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="setupForm.Designer.cs">
+    <Compile Include="Forms\setupForm.Designer.cs">
       <DependentUpon>setupForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="aboutInformationWindow.resx">
+    <Compile Include="Security\SecurityClass.cs" />
+    <EmbeddedResource Include="Forms\aboutInformationWindow.resx">
       <DependentUpon>aboutInformationWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="debugWindow.resx">
+    <EmbeddedResource Include="Forms\debugWindow.resx">
       <DependentUpon>debugWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="getInfoAboutUser.resx">
+    <EmbeddedResource Include="Forms\getInfoAboutUser.resx">
       <DependentUpon>getInfoAboutUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="history_messages_Form.resx">
+    <EmbeddedResource Include="Forms\history_messages_Form.resx">
       <DependentUpon>history_messages_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="logForm.resx">
+    <EmbeddedResource Include="Forms\logForm.resx">
       <DependentUpon>logForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="openFile.resx">
+    <EmbeddedResource Include="Forms\openFile.resx">
       <DependentUpon>openFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -232,7 +233,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="setupForm.resx">
+    <EmbeddedResource Include="Forms\setupForm.resx">
       <DependentUpon>setupForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -256,7 +257,10 @@
     <None Include="Resources\alert1.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="91.gif" />
     <Content Include="chat.ico" />
+    <None Include="Resources\91.gif" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

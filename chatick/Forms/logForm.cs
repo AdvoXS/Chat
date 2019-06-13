@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Threading;
 namespace chatick
 {
     public partial class logForm : Form
@@ -35,8 +36,13 @@ namespace chatick
             if (check_valid_textboxes_tabSingUP())
             {
                 dataBase = new DataBasePostgres();
-                if (!dataBase.registration_user(textBox3.Text, textBox4.Text, textBox5.Text, textBox6.Text, int.Parse(textBox7.Text)))
+                Security.SecurityClass securityClass = new Security.SecurityClass();
+                string[] hash = securityClass.password_MD5Hash(textBox4.Text);
+                string salt = hash[0];
+                string hashPass = hash[1];
+                if (!dataBase.registration_user(textBox3.Text, hashPass,salt, textBox5.Text, textBox6.Text, int.Parse(textBox7.Text)))
                 {
+                    label10.Text = "Такой пользователь уже существует!";
                     label10.Visible = true;
                 }
                 else
@@ -54,6 +60,10 @@ namespace chatick
         private void Button1_Click(object sender, EventArgs e)
         {
             label11.Visible = false;
+            label13.Visible = true;
+            button1.Enabled = false;
+            label13.Update();
+            Thread.Sleep(20);
             dataBase = new DataBasePostgres();
             string returnedString = dataBase.login_user(textBox1.Text, textBox2.Text);
             if (returnedString != "0"){
@@ -63,13 +73,15 @@ namespace chatick
             }
             else
             {
+                label13.Visible = false;
+                button1.Enabled = true;
                 label11.Visible = true;
             }
         }
 
         private void Label12_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Ваши сообщения  не сохранятся!\nВы точно хотите войти, как гость?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("Ваши сообщения  не сохранятся и часть функций будет недоступна!\nВы точно хотите войти, как гость?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
             {
                 Random rand = new Random();
                 int random = rand.Next(1, 1000);

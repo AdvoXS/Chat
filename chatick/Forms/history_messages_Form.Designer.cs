@@ -117,7 +117,7 @@
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "history_messages_Form";
-            this.Text = "history_messages_Form";
+            this.Text = "История";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Threading;
+using System.Threading.Tasks;
 namespace chatick
 {
     public partial class history_messages_Form : Form
@@ -15,14 +15,16 @@ namespace chatick
         {
             dateTimePicker1.CustomFormat = "dd.MM.yyyy";
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Value = DateTime.Now;
             dateTimePicker2.CustomFormat = "dd.MM.yyyy";
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.Value = DateTime.Now;
         }
         private void Button1_Click(object sender, EventArgs e)
         {
             textBox1.Text = "\tЗагружаем данные с сервера...";
 
-            Thread thread = new Thread(() => {
+            Task task = new Task(() => {
                 DataBasePostgres dataBase = new DataBasePostgres();
 
                 List<string> historyMes = dataBase.get_history_message_to_view(dateTimePicker1.Text, dateTimePicker2.Text);
@@ -44,7 +46,7 @@ namespace chatick
                 }
             });
             
-            thread.Start();
+            task.Start();
         }
 
         private void Label1_DoubleClick(object sender, EventArgs e)

@@ -59,14 +59,28 @@ namespace chatick
 
         private void setup()
         {
+            fdsToolStripMenuItem.MouseUp += fds_context_info_click;
             port = 8105;
             string ipAddress = "35.231.112.165";
             multiaddress = IPAddress.Parse(ipAddress);
             client = new UdpClient();
             client.Connect(multiaddress, port);
+            if (name.Length > 5) //проверка на гостя
+            {
+                string tmpstr = "";
+                for (int i = 0; i < 5; i++)
+                {
+                    tmpstr += name[i];
+                }
+                if (tmpstr == "guest")
+                {
+                    информацияToolStripMenuItem.Enabled = false;
+                    историяСообщенийToolStripMenuItem.Enabled = false;
+                }
+            }
             //client.JoinMulticastGroup(multiaddress);
             remote = new IPEndPoint(multiaddress, port);
-            label4.Text = "Ник: " + name;
+            label4.Text = "Вы: " + name;
             Listen();
         }
 
@@ -74,23 +88,12 @@ namespace chatick
         private void Listen()
         {
 
-            udpClient = new UdpClient(port+2);
+            udpClient = new UdpClient(port);
             udpClient.Client.SendTimeout = 5000;
-           udpClient.Client.ReceiveTimeout = 500;
+            udpClient.Client.ReceiveTimeout = 500;
             localIp = null;
-            //udpClient.ExclusiveAddressUse = false;
-            //localIp = new IPEndPoint(IPAddr);
-
-            //udpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-            //udpClient.ExclusiveAddressUse = false;
-
-            //udpClient.Client.Bind(localIp);
-
-           // udpClient.JoinMulticastGroup(multiaddress);
 
             textBox1.Text = "";
-
-
 
             button3.Visible = true;
             textBox3.Visible = true;
@@ -104,8 +107,6 @@ namespace chatick
             thread = new Thread(new ThreadStart(Listener));
             thread.Start();
             textBox3.Focus();
-
-
         }
 
 
@@ -120,6 +121,7 @@ namespace chatick
                 {
                     Byte[] data;
                     data = udpClient.Receive(ref localIp);
+                    
                     formatted_data = FromAes256(data);//Encoding.UTF8.GetString(data);
 
                     //принятие имени в список участников
@@ -285,7 +287,6 @@ namespace chatick
             string kek = "\t\t" + name + " disconnected from chat";
             byte[] data = ToAes256(kek);
             udpClient.Send(data, data.Length, remote);
-            //textBox3.Focus();
         }
         public void setName(string name)
         {
@@ -413,35 +414,38 @@ namespace chatick
 
              for (int i = 0; i < shifr.Length - 16; i++)
                 mess[i] = shifr[i];
-
-            Aes aes = Aes.Create();
-
-             aes.IV = bytesIv;
-
-            string text = "";
-            byte[] data = mess;
-            ICryptoTransform crypt = aes.CreateDecryptor(Encoding.ASCII.GetBytes(key), aes.IV);
-            using (MemoryStream ms = new MemoryStream(data))
+            using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
             {
-                using (CryptoStream cs = new CryptoStream(ms, crypt, CryptoStreamMode.Read))
+                // Aes aes = Aes.Create();
+                //aes.Padding = PaddingMode.None;
+                aes.IV = bytesIv;
+                aes.Key = Encoding.ASCII.GetBytes(key);
+                string salt = Encoding.ASCII.GetString(bytesIv);
+                string text = "";
+                byte[] data = mess;
+                ICryptoTransform crypt = aes.CreateDecryptor(aes.Key, aes.IV);
+                using (MemoryStream ms = new MemoryStream(data))
                 {
-                    using (StreamReader sr = new StreamReader(cs))
+                    using (CryptoStream cs = new CryptoStream(ms, crypt, CryptoStreamMode.Read))
                     {
-                        try
+                        using (StreamReader sr = new StreamReader(cs))
                         {
-                            //Результат записываем в переменную text в виде исходной строки
-                            text = sr.ReadToEnd();
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Неправильно открыт файл!","Ошибка", MessageBoxButtons.OK,
-                                 MessageBoxIcon.Error);
-                            Application.Restart();
+                            try
+                            {
+                                //Результат записываем в переменную text в виде исходной строки
+                                text = sr.ReadToEnd();
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Неправильное чтение данных!", "Ошибка", MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
+
+                return text;
             }
-            return text;
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
@@ -628,6 +632,43 @@ namespace chatick
         {
             history_messages_Form his_mes_Form = new history_messages_Form();
             his_mes_Form.Show();
+        }
+
+        private void НововведенияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("-Добавлены вход/регистрация\n-Добавлен вход через гостя\n-Теперь в истории сообщений по умолчанию сегодняшняя дата\n" +
+                "-Исправлены некоторые шрифты\n-Доработка стабильности\n", "Нововведения");
+        }
+
+        private void ListUsers_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ListUsers_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void ListUsers_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                listUsers.SelectedIndex = listUsers.IndexFromPoint(e.X, e.Y);
+            }
+            if (listUsers.SelectedIndex >= 0)
+            {
+                fdsToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                fdsToolStripMenuItem.Enabled = false;
+            }
+        }
+        private void fds_context_info_click(object sender, MouseEventArgs e)
+        {
+            getInfoAboutUser getInfoUser = new getInfoAboutUser(name);
+            getInfoUser.Show();
         }
     }
 }

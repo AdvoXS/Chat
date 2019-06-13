@@ -105,27 +105,53 @@ namespace chatick
         }
         public string login_user(string nick, string pass)
         {
-            connection_db_open();
-
-            NpgsqlCommand com = new NpgsqlCommand("SELECT nick FROM user_info,user_pass " +
-                "where user_info.id = user_pass.id and nick = @n and @p=password", NpgConnection);
-            com.Parameters.AddWithValue("n", nick);
-            com.Parameters.AddWithValue("p",pass);
+            
             NpgsqlDataReader reader;
-            reader = com.ExecuteReader();
-            if (reader.Read())
+            string salt = "";
+            //получаем соль пользователя
+            using (NpgsqlCommand com1 = new NpgsqlCommand())
             {
-                string nickName = reader.GetString(0);
+                connection_db_open();
+                com1.CommandText = "SELECT salt FROM user_info,user_pass " +
+                "where user_info.id = user_pass.id and nick = @n";
+                com1.Connection= NpgConnection;
+                com1.Parameters.AddWithValue("n", nick);
+                reader = com1.ExecuteReader();
+                if (reader.Read())
+                {
+                    salt = reader.GetString(0);
+                }
                 connection_db_close();
-                return nickName;
             }
-            else
+            Security.SecurityClass security = new Security.SecurityClass();
+            string password = security.password_MD5Hash_open(pass, salt);
+
+            //проверяем пароль
+
+            using (NpgsqlCommand com = new NpgsqlCommand())
             {
-                connection_db_close();
-                return "0";
+                connection_db_open();
+                com.CommandText="SELECT nick FROM user_info,user_pass " +
+                  "where user_info.id = user_pass.id and nick = @n and @p=password";
+                com.Connection = NpgConnection;
+                com.Parameters.AddWithValue("n", nick);
+                com.Parameters.AddWithValue("p", password);
+
+                reader = com.ExecuteReader();
+                if (reader.Read())
+                {
+                    string nickName = reader.GetString(0);
+                    connection_db_close();
+                    return nickName;
+                }
+                else
+                {
+                    connection_db_close();
+                    return "0";
+                }
             }
         }
-        public bool registration_user(string nick,string pass,string first_name, string second_name, int age)
+        public bool registration_user(string nick,string pass,string salt,string first_name, string second_name, int age)
         {
             connection_db_open();
 
@@ -150,9 +176,10 @@ namespace chatick
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = NpgConnection;
-                    cmd.CommandText = "INSERT INTO user_pass (id,password) VALUES ((SELECT id from user_info where @n=nick),@p)";
+                    cmd.CommandText = "INSERT INTO user_pass (id,password,salt) VALUES ((SELECT id from user_info where @n=nick),@p,@s)";
                     cmd.Parameters.AddWithValue("n", nick);
                     cmd.Parameters.AddWithValue("p", pass);
+                    cmd.Parameters.AddWithValue("s", salt);
                     cmd.ExecuteNonQuery();
                 }
                 connection_db_close();
@@ -163,6 +190,38 @@ namespace chatick
                 connection_db_close();
                 return false;
             }
+            
+        }
+
+        public List<string> get_information_user(string nick)
+        {
+            connection_db_open();
+
+            using (var cmd = new NpgsqlCommand())
+            {
+                cmd.Connection = NpgConnection;
+                cmd.CommandText = "Select nick,first_name,second_name,age from user_info where @n=nick";
+                cmd.Parameters.AddWithValue("n", nick);
+                NpgsqlDataReader reader;
+                List<string> listInfo = new List<string>();
+                reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    listInfo.Add(reader.GetString(0));
+                    listInfo.Add(reader.GetString(1));
+                    listInfo.Add(reader.GetString(2));
+                    listInfo.Add(Convert.ToString(reader.GetInt32(3)));
+                    connection_db_close();
+                    return listInfo;
+                }
+                else
+                {
+                    connection_db_close();
+                    return new List<string>(0);
+
+                }
+            }
+
             
         }
     }
