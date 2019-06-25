@@ -53,7 +53,7 @@ namespace chatick
             {
                 cmd.Connection = NpgConnection;
                 cmd.CommandText = "INSERT INTO public.history_messages (id,date_out,message) " +
-                    "VALUES ((Select id from user_info where @n=nick and nick is not null),to_timestamp(@d,'dd.mm.yyyy HH24:MI:SS'),@m)";
+                    "VALUES ((Select id from user_info where @n=nick),to_timestamp(@d,'dd.mm.yyyy HH24:MI:SS'),@m)";
                 cmd.Parameters.AddWithValue("n", nick);
                 cmd.Parameters.AddWithValue("d", date);
                 cmd.Parameters.AddWithValue("m", message);

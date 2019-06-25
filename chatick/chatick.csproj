@@ -257,7 +257,6 @@
     <None Include="Resources\alert1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="91.gif" />
     <Content Include="chat.ico" />
     <None Include="Resources\91.gif" />
   </ItemGroup>

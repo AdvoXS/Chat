@@ -56,7 +56,7 @@ namespace chatick
             this.Close();
         }
         //--------------------------------------backend---------------------------------------------------------------
-
+        string tmpstr;
         private void setup()
         {
             fdsToolStripMenuItem.MouseUp += fds_context_info_click;
@@ -67,7 +67,7 @@ namespace chatick
             client.Connect(multiaddress, port);
             if (name.Length > 5) //проверка на гостя
             {
-                string tmpstr = "";
+                tmpstr = "";
                 for (int i = 0; i < 5; i++)
                 {
                     tmpstr += name[i];
@@ -88,7 +88,7 @@ namespace chatick
         private void Listen()
         {
 
-            udpClient = new UdpClient(port);
+            udpClient = new UdpClient(port+1);
             udpClient.Client.SendTimeout = 5000;
             udpClient.Client.ReceiveTimeout = 500;
             localIp = null;
@@ -184,21 +184,24 @@ namespace chatick
                                     parseMessage += formatted_data[i];
                                 }
                             }
-                            try //сохраняем сообщение в историю(в таблицу history_messages)
+                            if (tmpstr != "guest")
                             {
-                                DataBasePostgres dataBase = new DataBasePostgres();
-                                await Task.Run(() => dataBase.add_message_user_async(parseNick, Convert.ToString(DateTime.Now), parseMessage));
-                            }
-                            catch
-                            {
-                                MessageBox.Show("Ошибка соединения. Сообщение не может быть сохранено на серевере.\n Сохраните переписку на компьютере, если не хотите его потерять");
+                                try //сохраняем сообщение в историю(в таблицу history_messages)
+                                {
+                                    DataBasePostgres dataBase = new DataBasePostgres();
+                                    await Task.Run(() => dataBase.add_message_user_async(parseNick, Convert.ToString(DateTime.Now), parseMessage));
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Ошибка соединения. Сообщение не может быть сохранено на серевере.\n Сохраните переписку на компьютере, если не хотите его потерять");
+                                }
                             }
                         }
                         if (textBox1.Text != "")
                         {
                             Action act = () =>
                             {
-                               textBox1.AppendText("\n");
+                               textBox1.AppendText("\r\n");
                                 textBox1.AppendText(formatted_data);
                             };
                             textBox1.Invoke(act);
@@ -416,8 +419,6 @@ namespace chatick
                 mess[i] = shifr[i];
             using (AesCryptoServiceProvider aes = new AesCryptoServiceProvider())
             {
-                // Aes aes = Aes.Create();
-                //aes.Padding = PaddingMode.None;
                 aes.IV = bytesIv;
                 aes.Key = Encoding.ASCII.GetBytes(key);
                 string salt = Encoding.ASCII.GetString(bytesIv);
