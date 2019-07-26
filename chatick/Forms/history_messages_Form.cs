@@ -58,7 +58,7 @@ namespace chatick
                 }
                 else
                 {
-                    Action messNullAction = () => textBox1.Text = "\tДанных о переписках на данный период нет.";
+                    Action messNullAction = () => textBox1.Text = "\tДанных о переписках на данный период нет!";
                     textBox1.Invoke(messNullAction);
                 }
             });
