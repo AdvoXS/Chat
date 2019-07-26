@@ -26,16 +26,6 @@ namespace chatick
                 return false;
             }
         }
-        private void LogForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            
-        }
-
-        private void LogForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //parentForm.close_Form();
-        }
-        DataBasePostgres dataBase;
         private void Button3_Click(object sender, EventArgs e)
         {
             //   MessageBox.Show(System.Diagnostics.Process.GetCurrentProcess().Threads.Count.ToString());
@@ -44,14 +34,13 @@ namespace chatick
 
                 if (check_valid_textboxes_tabSingUP())
                 {
-                    dataBase = new DataBasePostgres();
                     Security.SecurityClass securityClass = new Security.SecurityClass();
                     string[] hash = securityClass.password_MD5Hash(textBox4.Text);
                     string salt = hash[0];
                     string hashPass = hash[1];
                     try
                     {
-                        if (!dataBase.registration_user(textBox3.Text, hashPass, salt, textBox5.Text, textBox6.Text, int.Parse(textBox7.Text)))
+                        if (!DataBasePostgres.registration_user(textBox3.Text, hashPass, salt, textBox5.Text, textBox6.Text, int.Parse(textBox7.Text)))
                         {
                             label10.Text = "Такой пользователь уже существует!";
                             label10.Visible = true;
@@ -99,8 +88,7 @@ namespace chatick
             Thread.Sleep(20);
             try
             {
-                dataBase = new DataBasePostgres();
-                returnedString = dataBase.login_user(textBox1.Text, textBox2.Text);
+                returnedString = DataBasePostgres.login_user(textBox1.Text, textBox2.Text);
             }
             catch (Npgsql.PostgresException ex)
             {

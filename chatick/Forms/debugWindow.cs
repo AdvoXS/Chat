@@ -12,17 +12,15 @@ namespace chatick
 {
     public partial class debugWindow : Form
     {
-        DataBasePostgres dataBase;
         public debugWindow()
         {
             InitializeComponent();
-             dataBase = new DataBasePostgres();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             textBox1.Text = "";
-            List<string> getNicksList = dataBase.read_all_nicks_participants();
+            List<string> getNicksList = DataBasePostgres.read_all_nicks_participants();
             foreach(var a in getNicksList)
             {
                 textBox1.Text += a+"\r\n";

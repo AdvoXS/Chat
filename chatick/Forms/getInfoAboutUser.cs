@@ -24,8 +24,7 @@ namespace chatick
             {
                 try
                 {
-                    DataBasePostgres dataBase = new DataBasePostgres();
-                    list = dataBase.get_information_user(nick);
+                    list = DataBasePostgres.get_information_user(nick);
                 }
                 catch (Npgsql.PostgresException ex)
                 {
@@ -42,8 +41,8 @@ namespace chatick
                     MessageBox.Show("Неизвестная ошибка");
                     Logs.LogClass logClass = new Logs.LogClass("System", "Имя объекта вызвавшего ошибку: " + ex.Source + " Ошибка " + ex.Message);
                 }
-                if (list.Count>0)
-            {
+                if (list.Count>0 && list!=null)
+                    {
                     Action actVis1True = () => label1.Visible = true;
                     Action actVis2True = () => label2.Visible = true;
                     Action actVis3True = () => label3.Visible = true;

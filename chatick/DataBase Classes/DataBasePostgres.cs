@@ -6,27 +6,24 @@ using System.Threading.Tasks;
 using Npgsql;
 namespace chatick
 {
-    class DataBasePostgres
+    static class DataBasePostgres
     {
         //Класс - реализация взаимодействия с БД (соединение,запросы)
-        NpgsqlConnection NpgConnection;
-        public DataBasePostgres()
+        static NpgsqlConnection NpgConnection;
+         private static void connection_db_open()
         {
-        }
-         private void connection_db_open()
-        {
-            string connectionString = "Server=104.197.156.11;Port=5432;User Id=postgres;Password=752257mm;Database=postgres;";
+            string connectionString = "Server=104.197.156.11;Port=5432;User Id=postgres;Password=752257mm;Database=postgres;Timeout=15;";
             NpgConnection = new NpgsqlConnection(connectionString);
             NpgConnection.Open();
         }
-        private void connection_db_close()
+        private static void connection_db_close()
         {
             if (NpgConnection != null)
             {
                 NpgConnection.Close();
             }
         }
-        public List<string> read_all_nicks_participants()
+        public static List<string> read_all_nicks_participants()
         {
             connection_db_open();
             NpgsqlCommand com = new NpgsqlCommand("select nick from public.user_info", NpgConnection);
@@ -46,7 +43,7 @@ namespace chatick
             connection_db_close();
             return result;
         }
-       async public void add_message_user_async(string nick,string date,string message)
+       async public static void add_message_user_async(string nick,string date,string message)
         {
             connection_db_open();
             using (var cmd = new NpgsqlCommand())
@@ -62,7 +59,7 @@ namespace chatick
             connection_db_close();
         }
 
-        async public void create_information_about_user_async(string nick, string first_name,string second_name,int age)
+        async public static void create_information_about_user_async(string nick, string first_name,string second_name,int age)
         {
             connection_db_open();
            
@@ -80,7 +77,7 @@ namespace chatick
             
             connection_db_close();
         }
-        public List<string> get_history_message_to_view(string date_in,string date_out)
+        public static List<string> get_history_message_to_view(string date_in,string date_out)
         {
             connection_db_open();
             NpgsqlCommand com = new NpgsqlCommand("select nick,message,to_char(date_out, 'dd.mm.yyyy') as myDate, to_char(date_out, 'hh24:mi:ss') as myTime" +
@@ -103,7 +100,7 @@ namespace chatick
             connection_db_close();
            return result;
         }
-        public string login_user(string nick, string pass)
+        public static string login_user(string nick, string pass)
         {
             
             NpgsqlDataReader reader;
@@ -151,7 +148,7 @@ namespace chatick
                 }
             }
         }
-        public bool registration_user(string nick,string pass,string salt,string first_name, string second_name, int age)
+        public static bool registration_user(string nick,string pass,string salt,string first_name, string second_name, int age)
         {
             connection_db_open();
 
@@ -193,7 +190,7 @@ namespace chatick
             
         }
 
-        public List<string> get_information_user(string nick)
+        public static List<string> get_information_user(string nick)
         {
             connection_db_open();
 

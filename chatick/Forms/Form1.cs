@@ -41,20 +41,6 @@ namespace chatick
             //setForm.Activate();
             setup();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-        public void close_Form()
-        {
-            delName();
-            udpClient.Close();
-            thread.Abort();
-            thread.Join(5000);
-            thread = null;
-            this.Close();
-        }
         //--------------------------------------backend---------------------------------------------------------------
         string tmpstr;
         private void setup()
@@ -188,8 +174,7 @@ namespace chatick
                             {
                                 try //сохраняем сообщение в историю(в таблицу history_messages)
                                 {
-                                    DataBasePostgres dataBase = new DataBasePostgres();
-                                    await Task.Run(() => dataBase.add_message_user_async(parseNick, Convert.ToString(DateTime.Now), parseMessage));
+                                    await Task.Run(() => DataBasePostgres.add_message_user_async(parseNick, Convert.ToString(DateTime.Now), parseMessage));
                                 }
                                 catch (Npgsql.PostgresException ex)
                                 {
@@ -321,6 +306,7 @@ namespace chatick
             {
                 if (textBox3.Text != "") sendMessage(textBox3.Text);
                 textBox3.Focus();
+                e.Handled = true;
             }
         }
 
@@ -625,12 +611,11 @@ namespace chatick
 
         private void ПолучитьНикиВсехУастниковToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataBasePostgres data = new DataBasePostgres();
             string result="";
             string[] res=null;
             try
             {
-               res  = data.read_all_nicks_participants().ToArray();
+               res = DataBasePostgres.read_all_nicks_participants().ToArray();
             }
             catch (Npgsql.PostgresException)
             {

@@ -25,10 +25,9 @@ namespace chatick
             textBox1.Text = "\tЗагружаем данные с сервера...";
             List<string> historyMes = null;
             Task task = new Task(() => {
-                DataBasePostgres dataBase = new DataBasePostgres();
                 try
                 {
-                    historyMes = dataBase.get_history_message_to_view(dateTimePicker1.Text, dateTimePicker2.Text);
+                    historyMes = DataBasePostgres.get_history_message_to_view(dateTimePicker1.Text, dateTimePicker2.Text);
                 }
                 catch (Npgsql.PostgresException ex)
                 {

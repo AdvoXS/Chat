@@ -15,13 +15,12 @@ namespace chatick
         }
         async void bdConnectPostgr_async()
         {
-            DataBasePostgres dataBase = new DataBasePostgres();
            
                 await Task.Run(() =>
                 {
                     try
                     {
-                        dataBase.create_information_about_user_async(Nick,
+                        DataBasePostgres.create_information_about_user_async(Nick,
                          textBox1.Text, textBox2.Text, Convert.ToInt32(textBox3.Text));
                         MessageBox.Show("Информация добавлена!");
                     }
