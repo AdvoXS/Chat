@@ -339,9 +339,11 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-#bin files ignore
+#files ignore
+.vs/chatick/v15
 */**/bin/Debug
 */**/bin/Release
+*/**/
 chatick/bin
 *.exe
 *.pdb
