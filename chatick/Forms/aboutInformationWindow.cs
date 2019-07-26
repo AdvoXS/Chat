@@ -16,8 +16,7 @@ namespace chatick
         async void bdConnectPostgr_async()
         {
             DataBasePostgres dataBase = new DataBasePostgres();
-            try
-            {
+           
                 await Task.Run(() =>
                 {
                     try
@@ -30,18 +29,26 @@ namespace chatick
                     {
                         MessageBox.Show("Введены некорректные данные!");
                     }
+                    catch (Npgsql.PostgresException ex)
+                    {
+                        MessageBox.Show("Ошибка соединения с базой данных");
+                        Logs.LogClass logClass = new Logs.LogClass("DB", "Изменение данных пользователя о себе. Ошибка postgres: " + ex.MessageText);
+                    }
+                    catch (Npgsql.NpgsqlException ex)
+                    {
+                        MessageBox.Show("Ошибка соединения с базой данных");
+                        Logs.LogClass logClass = new Logs.LogClass("DB", "Изменение данных пользователя о себе. Ошибка связи: " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Неизвестная ошибка");
+                        Logs.LogClass logClass = new Logs.LogClass("System", "Имя объекта вызвавшего ошибку: " + ex.Source + " Ошибка " + ex.Message);
+                    }
                 }
                 );
-                
-            }
-            catch (Npgsql.PostgresException)
-            {
-                MessageBox.Show("Ошибка при добавлении информации. Удостоверьтесь, в правильности введенных данных!");
-            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            // bdConnect();
             bdConnectPostgr_async();
         }
     }
