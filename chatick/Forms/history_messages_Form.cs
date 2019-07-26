@@ -23,28 +23,11 @@ namespace chatick
         private void Button1_Click(object sender, EventArgs e)
         {
             textBox1.Text = "\tЗагружаем данные с сервера...";
-            List<string> historyMes = null;
+
             Task task = new Task(() => {
                 DataBasePostgres dataBase = new DataBasePostgres();
-                try
-                {
-                    historyMes = dataBase.get_history_message_to_view(dateTimePicker1.Text, dateTimePicker2.Text);
-                }
-                catch (Npgsql.PostgresException ex)
-                {
-                    MessageBox.Show("Ошибка соединения с базой данных");
-                    Logs.LogClass logClass = new Logs.LogClass("DB", "Получение истории сообщений. Ошибка postgres: " + ex.MessageText);
-                }
-                catch (Npgsql.NpgsqlException ex)
-                {
-                    MessageBox.Show("Ошибка соединения с базой данных");
-                    Logs.LogClass logClass = new Logs.LogClass("DB", "Получение истории сообщений. Ошибка связи: " + ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Неизвестная ошибка");
-                    Logs.LogClass logClass = new Logs.LogClass("System", "Имя объекта вызвавшего ошибку: " + ex.Source + " Ошибка " + ex.Message);
-                }
+
+                List<string> historyMes = dataBase.get_history_message_to_view(dateTimePicker1.Text, dateTimePicker2.Text);
                 if (historyMes.Count > 0)
                 {
                     Action messNullAction = () => textBox1.Text = "";

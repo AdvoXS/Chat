@@ -368,6 +368,7 @@ D:\Work\учеба\1 курс\chatick\chatick\obj\Debug\chatick.history_messages
 D:\Work\учеба\1 курс\chatick\chatick\obj\Debug\chatick.logForm.resources
 D:\Work\учеба\1 курс\chatick\chatick\obj\Debug\chatick.openFile.resources
 D:\Work\учеба\1 курс\chatick\chatick\obj\Debug\chatick.Properties.Resources.resources
+D:\Work\учеба\1 курс\chatick\chatick\obj\Debug\chatick.setupForm.resources
 D:\Work\учеба\1 курс\chatick\chatick\obj\Debug\chatick.csproj.GenerateResource.cache
 D:\Work\учеба\1 курс\chatick\chatick\obj\Debug\chatick.csproj.CoreCompileInputs.cache
 D:\Work\учеба\1 курс\chatick\chatick\obj\Debug\chatick.csproj.CopyComplete

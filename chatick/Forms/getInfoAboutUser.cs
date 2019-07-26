@@ -22,27 +22,10 @@ namespace chatick
             List<string> list = null;
             Task task =new Task(() =>
             {
-                try
-                {
-                    DataBasePostgres dataBase = new DataBasePostgres();
-                    list = dataBase.get_information_user(nick);
-                }
-                catch (Npgsql.PostgresException ex)
-                {
-                    MessageBox.Show("Ошибка соединения с базой данных");
-                    Logs.LogClass logClass = new Logs.LogClass("DB", "Получение данных пользователя о себе(из списка пользователей). Ошибка postgres: " + ex.MessageText);
-                }
-                catch (Npgsql.NpgsqlException ex)
-                {
-                    MessageBox.Show("Ошибка соединения с базой данных");
-                    Logs.LogClass logClass = new Logs.LogClass("DB", "Получение данных пользователя о себе(из списка пользователей). Ошибка связи: " + ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Неизвестная ошибка");
-                    Logs.LogClass logClass = new Logs.LogClass("System", "Имя объекта вызвавшего ошибку: " + ex.Source + " Ошибка " + ex.Message);
-                }
-                if (list.Count>0)
+                DataBasePostgres dataBase = new DataBasePostgres();
+                list = dataBase.get_information_user(nick);
+            
+            if (list.Count>0)
             {
                     Action actVis1True = () => label1.Visible = true;
                     Action actVis2True = () => label2.Visible = true;

@@ -191,20 +191,9 @@ namespace chatick
                                     DataBasePostgres dataBase = new DataBasePostgres();
                                     await Task.Run(() => dataBase.add_message_user_async(parseNick, Convert.ToString(DateTime.Now), parseMessage));
                                 }
-                                catch (Npgsql.PostgresException ex)
+                                catch
                                 {
-                                    MessageBox.Show("Ошибка соединения с базой данных");
-                                    Logs.LogClass logClass = new Logs.LogClass("DB", "Сохранение сообщения в базе данных. Ошибка postgres: " + ex.Message);
-                                }
-                                catch (Npgsql.NpgsqlException ex)
-                                {
-                                    MessageBox.Show("Ошибка соединения с базой данных");
-                                    Logs.LogClass logClass = new Logs.LogClass("DB", "Сохранение сообщения в базе данных. Ошибка связи: " + ex.Message);
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show("Неизвестная ошибка");
-                                    Logs.LogClass logClass = new Logs.LogClass("System", "Имя объекта вызвавшего ошибку: " + ex.Source + " Ошибка " + ex.Message);
+                                    MessageBox.Show("Ошибка соединения. Сообщение не может быть сохранено на серевере.\n Сохраните переписку на компьютере, если не хотите его потерять");
                                 }
                             }
                         }
@@ -627,15 +616,7 @@ namespace chatick
         {
             DataBasePostgres data = new DataBasePostgres();
             string result="";
-            string[] res=null;
-            try
-            {
-               res  = data.read_all_nicks_participants().ToArray();
-            }
-            catch (Npgsql.PostgresException)
-            {
-                MessageBox.Show("Ошибка соединения с базой данных");
-            }
+            string[] res = data.read_all_nicks_participants().ToArray();
             for(int i = 0; i < res.Length; i++)
             {
                 result += res[i] + " ";
