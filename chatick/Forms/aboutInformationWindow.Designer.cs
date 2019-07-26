@@ -54,7 +54,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 53);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 15);
+            this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Имя:";
             // 
@@ -63,7 +63,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(13, 84);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 15);
+            this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Фамилия:";
             // 
@@ -72,7 +72,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(13, 118);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 15);
+            this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Возраст:";
             // 
@@ -112,7 +112,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 148);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(271, 15);
+            this.label5.Size = new System.Drawing.Size(238, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "Информация успешно сохранена на сервере!";
             this.label5.Visible = false;
@@ -132,7 +132,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "aboutInformationWindow";
-            this.Text = "Информация";
+            this.Text = "7";
             this.ResumeLayout(false);
             this.PerformLayout();
 
