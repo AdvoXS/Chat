@@ -340,5 +340,10 @@ ASALocalRun/
 healthchecksdb
 
 #bin files ignore
+*/**/bin/Debug
+*/**/bin/Release
 chatick/bin
 *.exe
+*.pdb
+*.manifest
+*.cache
