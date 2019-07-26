@@ -154,7 +154,6 @@
     <Compile Include="Forms\aboutInformationWindow.Designer.cs">
       <DependentUpon>aboutInformationWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataBase Classes\AppDatabase.cs" />
     <Compile Include="DataBase Classes\DataBasePostgres.cs" />
     <Compile Include="Forms\debugWindow.cs">
       <SubType>Form</SubType>

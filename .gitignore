@@ -343,7 +343,6 @@ healthchecksdb
 .vs/chatick/v15
 */**/bin/Debug
 */**/bin/Release
-*/**/
 chatick/bin
 *.exe
 *.pdb
