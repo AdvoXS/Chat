@@ -37,7 +37,10 @@ namespace chatick
                 {
                     result.Add(reader.GetString(0));//Получаем значение из первого столбца! Первый это (0)!
                 }
-                catch { }
+                catch(Npgsql.NpgsqlException ex)
+                {
+                    Logs.LogClass log = new Logs.LogClass("DB", "Считывание ников ВСЕХ пользователей " + ex.Message);
+                }
             }
 
             connection_db_close();
@@ -95,7 +98,10 @@ namespace chatick
                 {
                     result.Add(reader.GetString(3) +" "+ reader.GetString(0)+":"+ reader.GetString(1));
                 }
-                catch { }
+                catch (Npgsql.NpgsqlException ex)
+                {
+                    Logs.LogClass logClass = new Logs.LogClass("DB", "Считывание истории сообщений " + ex.Message);
+                }
             }
             connection_db_close();
            return result;
@@ -187,7 +193,6 @@ namespace chatick
                 connection_db_close();
                 return false;
             }
-            
         }
 
         public static List<string> get_information_user(string nick)
@@ -215,11 +220,8 @@ namespace chatick
                 {
                     connection_db_close();
                     return new List<string>(0);
-
                 }
             }
-
-            
         }
     }
     

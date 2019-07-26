@@ -20,11 +20,24 @@ namespace chatick
         private void Button1_Click(object sender, EventArgs e)
         {
             textBox1.Text = "";
-            List<string> getNicksList = DataBasePostgres.read_all_nicks_participants();
-            foreach(var a in getNicksList)
+            List<string> getNicksList = null;
+            try
             {
-                textBox1.Text += a+"\r\n";
+                getNicksList = DataBasePostgres.read_all_nicks_participants();
+                foreach (var a in getNicksList)
+                {
+                    textBox1.Text += a + "\r\n";
+                }
             }
+            catch (Npgsql.PostgresException ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            catch (Npgsql.NpgsqlException ex)
+            {
+                MessageBox.Show("Error: "+ ex.Message);
+            }
+            
         }
     }
 }

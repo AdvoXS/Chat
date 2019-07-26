@@ -36,12 +36,8 @@ namespace chatick
             
             name = nick;
             parentForm = logform;
-            //setupForm setForm = new setupForm(this);
-            //setForm.ShowDialog();
-            //setForm.Activate();
             setup();
         }
-        //--------------------------------------backend---------------------------------------------------------------
         string tmpstr;
         private void setup()
         {
@@ -64,7 +60,6 @@ namespace chatick
                     историяСообщенийToolStripMenuItem.Enabled = false;
                 }
             }
-            //client.JoinMulticastGroup(multiaddress);
             remote = new IPEndPoint(multiaddress, port);
             label4.Text = "Вы: " + name;
             Listen();

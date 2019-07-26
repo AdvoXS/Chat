@@ -12,7 +12,6 @@ namespace chatick
         string nick;
         public getInfoAboutUser(string getNick)
         {
-           
             InitializeComponent();
             nick = getNick;
             get_info_BD();
