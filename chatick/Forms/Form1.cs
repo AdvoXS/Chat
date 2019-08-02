@@ -282,10 +282,7 @@ namespace chatick
             byte[] data = ToAes256(kek);
             udpClient.Send(data, data.Length, remote);
         }
-        public void setName(string name)
-        {
-            this.name = name;
-        }
+        
 
 
         //events funcs
@@ -310,16 +307,7 @@ namespace chatick
             formclosed = true;
         }
         
-        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            delName();
-            udpClient.Close();
-            thread.Abort();
-            thread.Join(5000);
-            thread = null;
-
-            Application.Exit();
-        }
+        
 
         private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -565,10 +553,7 @@ namespace chatick
 
         }
 
-        private void профилтььToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void информацияToolStripMenuItem_Click(object sender, EventArgs e)
         {
