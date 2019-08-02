@@ -132,7 +132,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "aboutInformationWindow";
-            this.Text = "7";
+            this.Text = "Изменение информации";
             this.ResumeLayout(false);
             this.PerformLayout();
 

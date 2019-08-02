@@ -22,16 +22,54 @@ namespace chatick
             else
             {
                 Logs.LogClass log = new Logs.LogClass("System", "Ввод данных регистрации. Неверный ввод полей");
-                MessageBox.Show("Неверный ввод полей.\nЛогин - от 3-х символов\nПароль от 6-ти симолов\nИмя от 2-х символов\nФамилия от 3-х символов\nВозраст только числом!");
+                if (textBox3.Text == "" || textBox3.Text.Length < 3)
+                {
+                    label14.Visible = true;
+                }
+                else
+                {
+                    label14.Visible = false;
+                }
+                if (textBox4.Text == "" && textBox4.Text.Length <6)
+                {
+                    label15.Visible = true;
+                }
+                else
+                {
+                    label15.Visible = false;
+                }
+                if (textBox5.Text == "" && textBox5.Text.Length <= 2)
+                {
+                    label16.Visible = true;
+                }
+                else
+                {
+                    label16.Visible = false;
+                }
+                if (textBox6.Text == "" && textBox6.Text.Length <= 3)
+                {
+                    label17.Visible = true;
+                }
+                else
+                {
+                    label17.Visible = false;
+                }
+                if (textBox7.Text == "" )
+                {
+                    label18.Visible = true;
+                }
+                else
+                {
+                    label18.Visible = false;
+                }
+                // MessageBox.Show("Неверный ввод полей.\nЛогин - от 3-х символов\nПароль от 6-ти симолов\nИмя от 2-х символов\nФамилия от 3-х символов\nВозраст только числом!");
                 return false;
             }
         }
         private void Button3_Click(object sender, EventArgs e)
         {
             //   MessageBox.Show(System.Diagnostics.Process.GetCurrentProcess().Threads.Count.ToString());
-            try
-            {
-
+            
                 if (check_valid_textboxes_tabSingUP())
                 {
                     Security.SecurityClass securityClass = new Security.SecurityClass();
@@ -63,17 +101,17 @@ namespace chatick
                         MessageBox.Show("Ошибка соединения с базой данных");
                         Logs.LogClass logClass = new Logs.LogClass("DB", "Отправка данных регистрации пользвателя. Ошибка связи: " + ex.Message);
                     }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Возраст должен быть числом!");
+                    }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Неизвестная ошибка");
                         Logs.LogClass logClass = new Logs.LogClass("System", "Имя объекта вызвавшего ошибку: " + ex.Source + " Ошибка " + ex.Message);
                     }
                 }
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Возраст должен быть числом!");
-            }
+            
         }
 
         
@@ -125,6 +163,16 @@ namespace chatick
                 this.Hide();
             }
             
+        }
+
+        private void TextBox7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -53,6 +53,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -191,6 +196,11 @@
             // 
             this.tabPage2.AutoScroll = true;
             this.tabPage2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tabPage2.Controls.Add(this.label18);
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.label16);
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.textBox7);
@@ -215,7 +225,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.Firebrick;
-            this.label10.Location = new System.Drawing.Point(179, 293);
+            this.label10.Location = new System.Drawing.Point(188, 288);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(199, 13);
             this.label10.TabIndex = 19;
@@ -225,9 +235,9 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.82178F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(225, 311);
+            this.button3.Location = new System.Drawing.Point(191, 305);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(179, 44);
+            this.button3.Size = new System.Drawing.Size(196, 44);
             this.button3.TabIndex = 18;
             this.button3.Text = "Далее";
             this.button3.UseVisualStyleBackColor = true;
@@ -239,6 +249,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(327, 20);
             this.textBox7.TabIndex = 16;
+            this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox7_KeyPress);
             // 
             // label9
             // 
@@ -318,11 +329,66 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 15.68317F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(225, 19);
+            this.label4.Location = new System.Drawing.Point(226, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(141, 24);
             this.label4.TabIndex = 6;
             this.label4.Text = "Регистрация";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(188, 55);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(264, 13);
+            this.label14.TabIndex = 20;
+            this.label14.Text = "Логин должен содержать как минимум 3 символа";
+            this.label14.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(188, 106);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(277, 13);
+            this.label15.TabIndex = 21;
+            this.label15.Text = "Пароль должен содержать как минимум 6 символов";
+            this.label15.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(187, 156);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(255, 13);
+            this.label16.TabIndex = 22;
+            this.label16.Text = "Имя должно содержать как минимум 3 символа";
+            this.label16.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.Red;
+            this.label17.Location = new System.Drawing.Point(187, 203);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(282, 13);
+            this.label17.TabIndex = 23;
+            this.label17.Text = "Фамилия должна содержать как минимум 4 символа";
+            this.label17.Visible = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.Red;
+            this.label18.Location = new System.Drawing.Point(188, 249);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(174, 13);
+            this.label18.TabIndex = 24;
+            this.label18.Text = "Возраст не должен быть пустым";
+            this.label18.Visible = false;
             // 
             // logForm
             // 
@@ -373,5 +439,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
     }
 }

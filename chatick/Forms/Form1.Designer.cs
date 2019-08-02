@@ -55,7 +55,6 @@
             this.clearChatToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.цветШрифтаЧатаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.показыватьМойНикToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.показыватьУчастниковЧатаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.показыватьПредупрежденияБезопасностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.чатToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +81,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(531, 372);
+            this.textBox1.Size = new System.Drawing.Size(531, 375);
             this.textBox1.TabIndex = 0;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             this.textBox1.MouseLeave += new System.EventHandler(this.textBox1_MouseLeave);
@@ -160,7 +159,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 7.841584F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(555, 64);
+            this.label1.Location = new System.Drawing.Point(556, 66);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 12;
@@ -176,7 +175,7 @@
             this.listUsers.FormattingEnabled = true;
             this.listUsers.Location = new System.Drawing.Point(559, 82);
             this.listUsers.Name = "listUsers";
-            this.listUsers.Size = new System.Drawing.Size(148, 316);
+            this.listUsers.Size = new System.Drawing.Size(148, 329);
             this.listUsers.TabIndex = 13;
             this.listUsers.Click += new System.EventHandler(this.ListUsers_Click);
             this.listUsers.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListUsers_MouseClick);
@@ -300,7 +299,6 @@
             // 
             this.видToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.цветШрифтаЧатаToolStripMenuItem,
-            this.показыватьМойНикToolStripMenuItem,
             this.показыватьУчастниковЧатаToolStripMenuItem,
             this.показыватьПредупрежденияБезопасностиToolStripMenuItem});
             this.видToolStripMenuItem.Name = "видToolStripMenuItem";
@@ -314,16 +312,6 @@
             this.цветШрифтаЧатаToolStripMenuItem.Size = new System.Drawing.Size(369, 24);
             this.цветШрифтаЧатаToolStripMenuItem.Text = "Шрифт чата";
             this.цветШрифтаЧатаToolStripMenuItem.Click += new System.EventHandler(this.цветШрифтаЧатаToolStripMenuItem_Click);
-            // 
-            // показыватьМойНикToolStripMenuItem
-            // 
-            this.показыватьМойНикToolStripMenuItem.Checked = true;
-            this.показыватьМойНикToolStripMenuItem.CheckOnClick = true;
-            this.показыватьМойНикToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.показыватьМойНикToolStripMenuItem.Name = "показыватьМойНикToolStripMenuItem";
-            this.показыватьМойНикToolStripMenuItem.Size = new System.Drawing.Size(369, 24);
-            this.показыватьМойНикToolStripMenuItem.Text = "Показывать мой ник";
-            this.показыватьМойНикToolStripMenuItem.Click += new System.EventHandler(this.показыватьМойНикToolStripMenuItem_Click);
             // 
             // показыватьУчастниковЧатаToolStripMenuItem
             // 
@@ -471,7 +459,6 @@
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem видToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem показыватьУчастниковЧатаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem показыватьМойНикToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem цветШрифтаЧатаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem показыватьПредупрежденияБезопасностиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem профильToolStripMenuItem;

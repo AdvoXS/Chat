@@ -527,15 +527,11 @@ namespace chatick
             }
         }
 
-        private void показыватьМойНикToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (показыватьМойНикToolStripMenuItem.Checked) label4.Visible = true;
-            else label4.Visible = false;
-        }
+        
 
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Narrow chat - это защищенный локальный чат.\n Hello, Dubna 2019", "О программе", MessageBoxButtons.OK,
+            MessageBox.Show("Narrow chat - это защищенный чат.\n Hello, Dubna 2019", "О программе", MessageBoxButtons.OK,
                                  MessageBoxIcon.Information);
         }
 
