@@ -8,7 +8,6 @@ namespace chatick.Security
 {
     class SecurityClass
     {
-        public SecurityClass() { }
         public string[] password_MD5Hash(string pass) // 1- возвращаемый параметр - соль, 2 - хешированная строка
         {//метод преобразует пароль в хеш-строку и генерирует соль
             using (MD5 md5Hash = MD5.Create()) //MD5(MD5(password)+salt)
