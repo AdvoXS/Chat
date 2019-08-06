@@ -65,7 +65,6 @@ namespace chatick
         async public static void create_information_about_user_async(string nick, string first_name,string second_name,int age)
         {
             connection_db_open();
-           
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = NpgConnection;
@@ -77,7 +76,6 @@ namespace chatick
                     cmd.Parameters.AddWithValue("a", age);
                     await cmd.ExecuteNonQueryAsync();
                 }
-            
             connection_db_close();
         }
         public static List<string> get_history_message_to_view(string date_in,string date_out)

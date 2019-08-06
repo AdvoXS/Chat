@@ -189,14 +189,15 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fdsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
             // 
             // fdsToolStripMenuItem
             // 
             this.fdsToolStripMenuItem.Enabled = false;
             this.fdsToolStripMenuItem.Name = "fdsToolStripMenuItem";
-            this.fdsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.fdsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fdsToolStripMenuItem.Text = "Информация";
+            this.fdsToolStripMenuItem.Click += new System.EventHandler(this.FdsToolStripMenuItem_Click);
             // 
             // dxghToolStripMenuItem
             // 

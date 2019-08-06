@@ -14,7 +14,7 @@ namespace chatick.Security
             {
                 string[] str = new string[2];
                 string Salt = generate_salt();
-                str[0]= Salt;
+                str[0] = Salt;
                 str[1] = GetMd5Hash(md5Hash, GetMd5Hash(md5Hash, pass) + Salt);
                 return str;
             }

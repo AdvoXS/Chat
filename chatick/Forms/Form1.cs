@@ -630,12 +630,13 @@ namespace chatick
         {
             
         }
-
+        static string getInfoNick = null;
         private void ListUsers_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
                 listUsers.SelectedIndex = listUsers.IndexFromPoint(e.X, e.Y);
+                getInfoNick = listUsers.SelectedItem.ToString();
             }
             if (listUsers.SelectedIndex >= 0)
             {
@@ -648,8 +649,14 @@ namespace chatick
         }
         private void fds_context_info_click(object sender, MouseEventArgs e)
         {
-            getInfoAboutUser getInfoUser = new getInfoAboutUser(name);
+            if (getInfoNick == null) getInfoNick = name;
+            getInfoAboutUser getInfoUser = new getInfoAboutUser(getInfoNick);
             getInfoUser.Show();
+        }
+
+        private void FdsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -19,7 +19,7 @@ namespace chatick
         void get_info_BD()
         {
             List<string> list = null;
-            Task task =new Task(() =>
+            Task task = new Task(() =>
             {
                 try
                 {
