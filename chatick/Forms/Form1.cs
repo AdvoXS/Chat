@@ -636,11 +636,12 @@ namespace chatick
             if (e.Button == MouseButtons.Right)
             {
                 listUsers.SelectedIndex = listUsers.IndexFromPoint(e.X, e.Y);
-                getInfoNick = listUsers.SelectedItem.ToString();
+                
             }
             if (listUsers.SelectedIndex >= 0)
             {
                 fdsToolStripMenuItem.Enabled = true;
+                getInfoNick = listUsers.SelectedItem.ToString();
             }
             else
             {
