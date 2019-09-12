@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using MongoDB.Driver;
-using MongoDB.Bson;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading;
