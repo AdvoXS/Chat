@@ -161,9 +161,9 @@
             this.label1.Font = new System.Drawing.Font("Calibri", 7.841584F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(556, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(101, 13);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Участники чата:";
+            this.label1.Text = "Пользователи чата:";
             // 
             // listUsers
             // 
@@ -189,13 +189,13 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fdsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 26);
             // 
             // fdsToolStripMenuItem
             // 
             this.fdsToolStripMenuItem.Enabled = false;
             this.fdsToolStripMenuItem.Name = "fdsToolStripMenuItem";
-            this.fdsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fdsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.fdsToolStripMenuItem.Text = "Информация";
             this.fdsToolStripMenuItem.Click += new System.EventHandler(this.FdsToolStripMenuItem_Click);
             // 
