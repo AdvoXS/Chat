@@ -69,7 +69,7 @@ namespace chatick
         private void Listen()
         {
 
-            udpClient = new UdpClient(port+1);
+            udpClient = new UdpClient(port+2);
             udpClient.Client.SendTimeout = 5000;
             udpClient.Client.ReceiveTimeout = 500;
             localIp = null;
@@ -81,7 +81,7 @@ namespace chatick
 
             //connectInfo
             connectMessage();
-            listUsers.Items.Add(name);
+            //listUsers.Items.Add(name);
             sendName();
             requestNames();
 
@@ -661,8 +661,3 @@ namespace chatick
         }
     }
 }
-    
-
-
-
-
