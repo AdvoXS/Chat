@@ -12,7 +12,7 @@ namespace chatick
         static NpgsqlConnection NpgConnection;
          private static void connection_db_open()
         {
-            string connectionString = "Server=104.197.156.11;Port=5432;User Id=postgres;Password=752257mm;Database=postgres;Timeout=15;";
+            string connectionString = "Server=104.197.156.11;Port=5432;User Id=postgres;Password=HelloSql1;Database=postgres;Timeout=15;";
             NpgConnection = new NpgsqlConnection(connectionString);
             NpgConnection.Open();
         }
